@@ -5,7 +5,7 @@ const ejs = require("ejs");
 // App 
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
+app.use(express.static(__dirname +"public"));
 const port = 80;
 let contact_details = [];
 const GoogleSpreadsheet = require('google-spreadsheet');
@@ -32,7 +32,7 @@ let contents = [
         content:"Consultancy on various intricate matters pertaining to Income tax. Effective tax management, tax structuring and advisory services. Tax Planning for Corporates and others."
     }
   ]; 
- const creds = require("./client_secret.json");
+ const creds = require(__dirname+"./client_secret.json");
   async function acessSpreadSheetContact(){
     const doc = new GoogleSpreadsheet('1qjgDwYLcM3DwwoF5tkzeS9DAVu8nzoCP5ARwOMqjxZY');
     await promisify(doc.useServiceAccountAuth)(creds);
@@ -56,13 +56,13 @@ app.set('view engine','ejs');
 
 app.get("/",function(req,res){
 
-    res.render("home",{
+    res.render(__dirname+"home",{
         contents: contents
     });
 })
 
 app.get("/sucess",function(req,res){
-    res.render("sucess")
+    res.render(__dirname+"sucess")
     console.log("ok");
 })
  app.post("/sucess",function(req,res){
@@ -78,13 +78,13 @@ app.get("/sucess",function(req,res){
         subject: subject,
         message: message
     }
-    res.render("sucess")
+    res.render(__dirname+"sucess")
     contact_details.push(details);
     acessSpreadSheetContact();
  })
 
 
 
-app.listen(port,function(){
+app.listen(process.env.PORT||port,function(){
     console.log(`App started at port ${port}`)
 })

@@ -1,5 +1,5 @@
-<%- include("partials/head.ejs") -%>
-<%- include("partials/navbar.ejs") -%>
+<%- include(__dirname +"partials/head.ejs") -%>
+<%- include(__dirname +"partials/navbar.ejs") -%>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 35rem;">
         <div class="carousel-inner" style="height: 35rem;">
           <div class="carousel-item active">
@@ -22,7 +22,7 @@
         </a>
       </div>
     </tr>
-    <%- include("partials/hero.ejs");  -%> 
+    <%- include(__dirname +"partials/hero.ejs");  -%> 
     <section id="about-us">
         <h1>
           Welcome to Jain & Dugar Associates
@@ -67,6 +67,6 @@
         <li class="list-group-item">Continuous Education and Training of Staff and Clients.</li>
       </ul>
      </section>
-     <%- include("partials/contact.ejs") -%>
-     <%- include("partials/bottom.ejs") -%>
-    <%- include("partials/foot.ejs") -%>
+     <%- include(__dirname +"partials/contact.ejs") -%>
+     <%- include(__dirname +"partials/bottom.ejs") -%>
+    <%- include(__dirname +"partials/foot.ejs") -%>
